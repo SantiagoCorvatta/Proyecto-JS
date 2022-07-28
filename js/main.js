@@ -45,3 +45,78 @@ producto16.propiedadArt()
 //Carga de Array forma directa
 const Venta = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16]
 console.log(Venta);
+
+function preguntarOpcion(){
+    let opcion = parseInt(prompt(`Bienvenido/a a Elite Sport! Ingrese el número de la opción que desea realizar:
+                        1 - Ingresar un nuevo producto al stock
+                        2 - Mostrar catalogo 
+                        3 - Buscar producto por seccion 
+                        0 - Salir`))
+                                   
+    menu(opcion)
+}
+//Function que ofrezca un menú
+function menu(opcionSeleccionada){
+    switch(opcionSeleccionada){
+        case 0:
+            salir = true
+            alert("Gracias por visitar Elite Sport, vuelva pronto")
+        break    
+        case 1:
+            ingresarArticulo()
+      	break 
+   	    case 2: 
+            mostrarCatalogo()
+      	break 
+   	    case 3: 
+            buscarSeccion()
+      	break
+        
+   	    default: 
+      	alert(`Ingrese una opción correcta`)
+    }console.log(menu);
+}
+
+let salir 
+while(salir != true){
+    preguntarOpcion()   
+}
+
+//Funcion para agregar un producto
+function ingresarArticulo(){
+    let articuloIngresado = prompt("Ingrese el nombre del articulo a incorporar")
+    let seccionIngresada = prompt("Ingrese la seccion a la que pertenece el articulo")
+    let precioIngresado = prompt("Ingrese el precio del nuevo articulo")
+    let nuevoArticulo = new Producto (articuloIngresado, seccionIngresada, precioIngresado)
+        console.log(nuevoArticulo);
+        
+//Push del nuevo Articulo al Array
+Venta.push(nuevoArticulo)
+console.log(Venta);
+}
+// ingresarArticulo()
+
+//Muestra de catalogo
+function mostrarCatalogo(){
+    Venta.forEach((producto)=>console.log(`El articulo ${producto.articulo} tiene un valor de ${producto.precio}`))
+    
+}
+// mostrarCatalogo()
+
+//Buscar por seccion
+function buscarSeccion(){
+    let secBuscada = prompt("Ingrese la seccion que desea conocer")
+    let busca = Venta.filter((producto)=>producto.seccion.toLowerCase() == secBuscada.toLowerCase())
+        if (busca == ""){
+            alert("La seccion que intenta conocer no se encuentra disponible")
+        }else{
+            console.log(busca);
+            
+        }
+}
+
+// buscarSeccion()
+
+
+    
+    
