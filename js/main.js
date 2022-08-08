@@ -68,7 +68,7 @@ nuevoProducto.innerHTML = `<div class= "shell">
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="wcf-left"><span class="price">$${producto.precio}</span></div>
-                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="/img/carro.png" alt=""></a></div>                
+                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="./img/carro.png" alt=""></a></div>                
                                                 </div>
                                             </div>
                                         </div>
