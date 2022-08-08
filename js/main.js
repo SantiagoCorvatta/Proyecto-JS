@@ -34,7 +34,7 @@ const producto11 = new Producto("Botines Total 90", "Futbol", 5.999, "./img/tota
 producto11.propiedadArt()
 const producto12 = new Producto("Camiseta Seleccion Argentina 2022", "Futbol", 14.999, "./img/argqatar.png")
 producto12.propiedadArt()
-const producto13 = new Producto("Chicago Bulls 23", "Basquet", 9.999, "./img/productos/bulls.jpg")
+const producto13 = new Producto("Chicago Bulls 23", "Basquet", 9.999, "./img/musculosa.png")
 producto13.propiedadArt()
 const producto14 = new Producto("Camiseta Seleccion Argentina '86", "Futbol", 7.499, "./img/mexico86.jpg")
 producto14.propiedadArt()
@@ -68,7 +68,7 @@ nuevoProducto.innerHTML = `<div class= "shell">
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="wcf-left"><span class="price">$${producto.precio}</span></div>
-                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="/img/cart.png" alt=""></a></div>                
+                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="/img/carro.png" alt=""></a></div>                
                                                 </div>
                                             </div>
                                         </div>
