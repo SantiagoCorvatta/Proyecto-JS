@@ -208,6 +208,25 @@ video{
     display:inline-block;
     margin: 0 5px;
   }
+  h2{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+ .btn-dark{
+    margin-left: 42% ;
+    margin-top: 15px;
+  }
+  .mb-3{
+    margin-left: 35%
+  }
+  .form-control{
+    width: 40%;    
+  }
+  footer{
+    margin-top: 20px;
+  }
   @media screen and (max-width: 991px) {
     .wsk-cp-product{
       margin:40px auto;

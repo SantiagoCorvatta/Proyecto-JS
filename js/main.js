@@ -48,6 +48,7 @@ const Venta = [producto1, producto2, producto3, producto4, producto5, producto6,
 console.log(Venta);
 
 // Plantilla CARDS
+function mostrarCatalogo(){
 let divProductos = document.getElementById("productos")
 Venta.forEach((producto)=>{
 let nuevoProducto = document.createElement("div")
@@ -68,7 +69,7 @@ nuevoProducto.innerHTML = `<div class= "shell">
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="wcf-left"><span class="price">$${producto.precio}</span></div>
-                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="./img/carro.png" alt=""></a></div>                
+                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="./img/carro.png" alt="" id="buyCart"></a></div>                
                                                 </div>
                                             </div>
                                         </div>
@@ -78,6 +79,28 @@ nuevoProducto.innerHTML = `<div class= "shell">
                             </div>`
 divProductos.appendChild(nuevoProducto)
 })
+}
+mostrarCatalogo()
+let verArticuloBtn = document.getElementById("verArticulo")
+verArticuloBtn.addEventListener("click", mostrarCatalogo)
+
+
+// Function Agregar nuevo producto al stock. Eventos
+function agregarProd(){
+    let productInput = document.getElementById("productInput")
+    let sectionInput = document.getElementById("sectionInput")
+    let priceInput = document.getElementById("priceInput")
+    let nuevoArticulo = new Producto(productInput.value, sectionInput.value, priceInput.value, "./img/pelota.jpg")
+    console.log(nuevoArticulo);
+    Venta.push(nuevoArticulo)
+    console.log(Venta);
+}
+const agregarArt = document.getElementById("agregarArt")
+agregarArt.addEventListener("click", agregarProd)
+
+
+
+
 // function preguntarOpcion(){
 //     let opcion = parseInt(prompt(`Bienvenido/a a Elite Sport! Ingrese el número de la opción que desea realizar:
 //                         1 - Ingresar un nuevo producto al stock
