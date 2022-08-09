@@ -79,6 +79,13 @@ nuevoProducto.innerHTML = `<div class= "shell">
                             </div>`
 divProductos.appendChild(nuevoProducto)
 })
+
+//Evento agregar producto al carrito
+let btnCart = document.getElementsByClassName("wcf-right")
+for(let buyBtn of btnCart){
+    buyBtn.addEventListener("click", ()=>(alert("El producto ha sido añadido al carrito")))
+}
+
 }
 mostrarCatalogo()
 let verArticuloBtn = document.getElementById("verArticulo")
