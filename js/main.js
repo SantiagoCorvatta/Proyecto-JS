@@ -50,6 +50,7 @@ console.log(Venta);
 // Plantilla CARDS
 function mostrarCatalogo(){
 let divProductos = document.getElementById("productos")
+divProductos.innerHTML = "";
 Venta.forEach((producto)=>{
 let nuevoProducto = document.createElement("div")
 nuevoProducto.innerHTML = `<div class= "shell">
