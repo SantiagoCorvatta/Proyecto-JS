@@ -6,8 +6,7 @@ class Producto{
         this.precio = precio,
         this.imagen = imagen
 
-        this.propiedadArt = function(){ 
-        console.log(`El articulo es ${this.articulo}, perteneciente a la seccion ${this.seccion} y su precio es ${this.precio}`)};
+        this.propiedadArt = function(){};
     }    
 }
 const producto1 = new Producto("Camiseta River Plate 2022", "Futbol", 14.999, "./img/river1ra.jpg")
@@ -44,8 +43,23 @@ const producto16 = new Producto("Camiseta Racing Club 2022", "Futbol", 7.999, ".
 producto16.propiedadArt()
 
 //Carga de Array forma directa
-const Venta = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16]
-console.log(Venta);
+let Venta = []
+let articuloComprado = []
+// console.log(Venta);
+
+//Elementos
+let botonCarrito = document.getElementById("botonCarrito")
+let modalBody = document.getElementById("modal-body")
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+let parrafoCompra = document.getElementById('precioTotal')
+let acumulador
+let divProductos = document.getElementById("productos")
+divProductos.setAttribute("class", "productosEstilos")
+
+//Carga de productos al carrito
+botonCarrito.addEventListener('click', () => {   
+    cargarProductosCarrito(articuloComprado)    
+})
 
 // Plantilla CARDS
 function mostrarCatalogo(){
@@ -70,7 +84,7 @@ nuevoProducto.innerHTML = `<div class= "shell">
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="wcf-left"><span class="price">$${producto.precio}</span></div>
-                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="./img/carro.png" alt="" id="buyCart"></a></div>                
+                                                    <div class="wcf-right"><a href="#" class="buy-btn"><img src="./img/carro.png" alt="" id="buyCart${producto.articulo}"></a></div>                
                                                 </div>
                                             </div>
                                         </div>
@@ -79,15 +93,48 @@ nuevoProducto.innerHTML = `<div class= "shell">
                              </div>
                             </div>`
 divProductos.appendChild(nuevoProducto)
+//Agregar al carrito
+let btnCarro = document.getElementById(`buyCart${producto.articulo}`)
+
+//Invocar btnCarro
+btnCarro.addEventListener("click", ()=>(addToCart(producto)))
 })
 
-//Evento agregar producto al carrito
-let btnCart = document.getElementsByClassName("wcf-right")
-for(let buyBtn of btnCart){
-    buyBtn.addEventListener("click", ()=>(alert("El producto ha sido añadido al carrito")))
 }
 
+function addToCart(producto){
+   articuloComprado.push(producto)
+   localStorage.setItem("cart", JSON.stringify(articuloComprado))
 }
+// //Evento agregar producto al carrito
+// let btnCart = document.getElementsByClassName("wcf-right")
+// for(let buyBtn of btnCart){
+//     buyBtn.addEventListener("click", ()=>(alert("El producto ha sido añadido al carrito")))
+
+
+// }
+
+
+
+
+
+//Iniciacion de array Venta
+if(localStorage.getItem("Venta")){    
+    Venta = JSON.parse(localStorage.getItem("Venta"))   
+}else{    
+    Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
+    localStorage.setItem("Venta", JSON.stringify(Venta))
+}
+
+//Iniciacion de array carrito 
+if(localStorage.getItem("cart")){
+    articuloComprado = JSON.parse(localStorage.getItem("cart"))
+}else{    
+    localStorage.setItem("cart", [])
+    
+} 
+
+
 mostrarCatalogo()
 let verArticuloBtn = document.getElementById("verArticulo")
 verArticuloBtn.addEventListener("click", mostrarCatalogo)
@@ -102,9 +149,44 @@ function agregarProd(){
     console.log(nuevoArticulo);
     Venta.push(nuevoArticulo)
     console.log(Venta);
+    localStorage.setItem("Venta", JSON.stringify(Venta))
 }
 const agregarArt = document.getElementById("agregarArt")
 agregarArt.addEventListener("click", agregarProd)
+function cargarProductosCarrito(productosDelStorage){
+
+    modalBody.innerHTML = " "
+    productosDelStorage.forEach((productoCarrito)=> {
+
+        modalBody.innerHTML += `<div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.articulo}" style="max-width: 540px;">
+        <img class="card-img-top" src="${productoCarrito.imagen}" alt="${productoCarrito.articulo}">
+        <div class="card-body">
+                <h4 class="card-title">${productoCarrito.articulo}</h4>
+            
+                <p class="card-text">$${productoCarrito.precio}</p> 
+                
+<button class="noselect" id="botonEliminar"><span class="text">Eliminar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
+        </div>    
+    
+    
+    </div>
+`
+    })
+  compraTotal(productosDelStorage)
+}
+
+//Calculo de totales
+function compraTotal(totales){
+    acum = 0
+    totales.forEach((productoCarrito)=>{
+        acum += productoCarrito.precio
+    })
+    if (acum == 0){
+        parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
+    }else{
+        parrafoCompra.innerHTML = `Importe total: $${acum}`
+    }
+}
 
 
 
