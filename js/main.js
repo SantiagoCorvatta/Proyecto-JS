@@ -126,7 +126,7 @@ if(localStorage.getItem("Venta")){
     localStorage.setItem("Venta", JSON.stringify(Venta))
 }
 
-//Iniciacion de array carrito 
+//Iniciacion de array cart 
 if(localStorage.getItem("cart")){
     articuloComprado = JSON.parse(localStorage.getItem("cart"))
 }else{    
@@ -182,7 +182,7 @@ function cargarProductosCarrito(productosDelStorage){
 function compraTotal(totales){
     acum = 0
     totales.forEach((productoCarrito)=>{
-        acum += productoCarrito.precio
+        acum += parseInt(productoCarrito.precio)
     })
     if (acum == 0){
         parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
