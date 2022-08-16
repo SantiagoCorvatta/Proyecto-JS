@@ -118,21 +118,24 @@ function addToCart(producto){
 
 
 
-//Iniciacion de array Venta
-if(localStorage.getItem("Venta")){    
-    Venta = JSON.parse(localStorage.getItem("Venta"))   
-}else{    
-    Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
-    localStorage.setItem("Venta", JSON.stringify(Venta))
-}
+//Iniciacion de array Venta OPERADOR TERNARIO
+localStorage.getItem("Venta") ? Venta = JSON.parse(localStorage.getItem("Venta")) : Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
+localStorage.setItem("Venta", JSON.stringify(Venta))
+// if(localStorage.getItem("Venta")){    
+//     Venta = JSON.parse(localStorage.getItem("Venta"))   
+// }else{    
+//     Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
+//     localStorage.setItem("Venta", JSON.stringify(Venta))
+// }
 
-//Iniciacion de array cart 
-if(localStorage.getItem("cart")){
-    articuloComprado = JSON.parse(localStorage.getItem("cart"))
-}else{    
-    localStorage.setItem("cart", [])
+//Iniciacion de array cart OPERADOR TERNARIO
+localStorage.getItem("cart") ? articuloComprado = JSON.parse(localStorage.getItem("cart")) : localStorage.setItem("cart", [])
+// if(localStorage.getItem("cart")){
+//     articuloComprado = JSON.parse(localStorage.getItem("cart"))
+// }else{    
+//     localStorage.setItem("cart", [])
     
-} 
+// } 
 
 
 mostrarCatalogo()
@@ -175,21 +178,27 @@ function cargarProductosCarrito(productosDelStorage){
     
     </div>`
     })
-  compraTotal(productosDelStorage)
+  compraTotal(...productosDelStorage)
 }
 
-//Calculo de totales
-function compraTotal(totales){
+//Calculo de totales SPREAD, REDUCE y OP TERNARIO
+function compraTotal(...totales){
     acum = 0
-    totales.forEach((productoCarrito)=>{
-        acum += parseInt(productoCarrito.precio)
-    })
-    if (acum == 0){
-        parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
-    }else{
-        parrafoCompra.innerHTML = `Importe total: $ ${acum}`
-    }
+    acum = totales.reduce((acum , productoCarrito)=>{
+        return acum + parseInt(productoCarrito.precio)
+    },0)
+
+    acum > 0 ? parrafoCompra.innerHTML = `Importe total: $ ${acum}` : parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
+    // totales.forEach((productoCarrito)=>{
+        // acum += parseInt(productoCarrito.precio)
+    // })
+    // if (acum == 0){
+    //     parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
+    // }else{
+    //     parrafoCompra.innerHTML = `Importe total: $ ${acum}`
+    // }
 }
+
 
 
 
