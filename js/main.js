@@ -105,37 +105,24 @@ btnCarro.addEventListener("click", ()=>(addToCart(producto)))
 function addToCart(producto){
    articuloComprado.push(producto)
    localStorage.setItem("cart", JSON.stringify(articuloComprado))
+   Swal.fire({
+        title: "Articulo agregado",
+        text: "El producto se ha agregado al carrito",
+        icon: "success",
+        confirmButtonText: "Cerrar"
+   }) 
 }
-// //Evento agregar producto al carrito
-// let btnCart = document.getElementsByClassName("wcf-right")
-// for(let buyBtn of btnCart){
-//     buyBtn.addEventListener("click", ()=>(alert("El producto ha sido añadido al carrito")))
-
-
-// }
-
-
 
 
 
 //Iniciacion de array Venta OPERADOR TERNARIO
 localStorage.getItem("Venta") ? Venta = JSON.parse(localStorage.getItem("Venta")) : Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
 localStorage.setItem("Venta", JSON.stringify(Venta))
-// if(localStorage.getItem("Venta")){    
-//     Venta = JSON.parse(localStorage.getItem("Venta"))   
-// }else{    
-//     Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
-//     localStorage.setItem("Venta", JSON.stringify(Venta))
-// }
+
 
 //Iniciacion de array cart OPERADOR TERNARIO
 localStorage.getItem("cart") ? articuloComprado = JSON.parse(localStorage.getItem("cart")) : localStorage.setItem("cart", [])
-// if(localStorage.getItem("cart")){
-//     articuloComprado = JSON.parse(localStorage.getItem("cart"))
-// }else{    
-//     localStorage.setItem("cart", [])
-    
-// } 
+
 
 
 mostrarCatalogo()
@@ -177,8 +164,14 @@ function cargarProductosCarrito(productosDelStorage){
     
     
     </div>`
-    })
+
+    
+})    
+
+
+    
   compraTotal(...productosDelStorage)
+  
 }
 
 //Calculo de totales SPREAD, REDUCE y OP TERNARIO
@@ -189,90 +182,14 @@ function compraTotal(...totales){
     },0)
 
     acum > 0 ? parrafoCompra.innerHTML = `Importe total: $ ${acum}` : parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
-    // totales.forEach((productoCarrito)=>{
-        // acum += parseInt(productoCarrito.precio)
-    // })
-    // if (acum == 0){
-    //     parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
-    // }else{
-    //     parrafoCompra.innerHTML = `Importe total: $ ${acum}`
-    // }
+    
 }
 
 
 
 
 
-// function preguntarOpcion(){
-//     let opcion = parseInt(prompt(`Bienvenido/a a Elite Sport! Ingrese el número de la opción que desea realizar:
-//                         1 - Ingresar un nuevo producto al stock
-//                         2 - Mostrar catalogo 
-//                         3 - Buscar producto por seccion 
-//                         0 - Salir`))
-                                   
-//     menu(opcion)
-// }
-//Function que ofrezca un menú
-// function menu(opcionSeleccionada){
-//     switch(opcionSeleccionada){
-//         case 0:
-//             salir = true
-//             alert("Gracias por visitar Elite Sport, vuelva pronto")
-//         break    
-//         case 1:
-//             ingresarArticulo()
-//       	break 
-//    	    case 2: 
-//             mostrarCatalogo()
-//       	break 
-//    	    case 3: 
-//             buscarSeccion()
-//       	break
-        
-//    	    default: 
-//       	alert(`Ingrese una opción correcta`)
-//     }console.log(menu);
-// }
 
-// let salir 
-// while(salir != true){
-//     preguntarOpcion()   
-// }
-
-//Funcion para agregar un producto
-// function ingresarArticulo(){
-//     let articuloIngresado = prompt("Ingrese el nombre del articulo a incorporar")
-//     let seccionIngresada = prompt("Ingrese la seccion a la que pertenece el articulo")
-//     let precioIngresado = prompt("Ingrese el precio del nuevo articulo")
-//     let nuevoArticulo = new Producto (articuloIngresado, seccionIngresada, precioIngresado)
-//         console.log(nuevoArticulo);
-        
-//Push del nuevo Articulo al Array
-// Venta.push(nuevoArticulo)
-// console.log(Venta);
-// }
-// ingresarArticulo()
-
-//Muestra de catalogo
-// function mostrarCatalogo(){
-//     Venta.forEach((producto)=>console.log(`El articulo ${producto.articulo} tiene un valor de ${producto.precio}`))
-    
-// }
-// mostrarCatalogo()
-
-//Buscar por seccion
-// function buscarSeccion(){
-//     let secBuscada = prompt("Ingrese la seccion que desea conocer")
-//     let busca = Venta.filter((producto)=>producto.seccion.toLowerCase() == secBuscada.toLowerCase())
-//         if (busca == ""){
-//             alert("La seccion que intenta conocer no se encuentra disponible")
-//         }else{
-//             console.log(busca);
-            
-//         }
-// }
-
-// buscarSeccion()
 
 
     
