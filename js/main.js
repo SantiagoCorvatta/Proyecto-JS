@@ -168,7 +168,21 @@ function cargarProductosCarrito(productosDelStorage){
     
 })    
 
+productosDelStorage.forEach((productoCarrito, indice)=>{
+    //capturamos el boton sin usar variable y adjuntamos evento
+    document.getElementById(`botonEliminar`).addEventListener('click', () => {
+       
+        //Eliminar articulo en el DOM
+        let article = document.getElementById(`productoCarrito${productoCarrito.articulo}`)        
+        article.remove()
 
+        //Eliminar articulo del array "CART"
+        articuloComprado.splice(indice, 1)        
+        localStorage.setItem("cart", JSON.stringify(articuloComprado))
+        cargarProductosCarrito(articuloComprado)
+    })  
+
+})
     
   compraTotal(...productosDelStorage)
   
@@ -184,7 +198,16 @@ function compraTotal(...totales){
     acum > 0 ? parrafoCompra.innerHTML = `Importe total: $ ${acum}` : parrafoCompra.innerHTML = `El carrito de compras se encuentra vacio`
     
 }
+//Finalizacion de compra
+function finalizarCompra(){    
+    articuloComprado = []
+    localStorage.removeItem('cart')       
+    cargarProductosCarrito(productosEnCarrito)
 
+}
+botonFinalizarCompra.addEventListener('click',()=>{
+    finalizarCompra()
+})
 
 
 
