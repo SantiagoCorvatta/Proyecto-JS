@@ -1,0 +1,98 @@
+[
+{
+    "articulo": "Camiseta River Plate 2022",
+    "seccion": "Futbol",
+    "precio": 14999,
+    "imagen": "./img/river1ra.jpg"
+},
+{
+    "articulo": "Camiseta Estudiantes de la Plata",
+    "seccion": "Futbol",
+    "precio": 8999,
+    "imagen": "./img/estudiantes.jpg"
+}, 
+{
+    "articulo": "Seleccion Argentina Hockey",
+    "seccion": "Hockey",
+    "precio": 7999,
+    "imagen": "./img/leonas.jpg"
+}, 
+{
+    "articulo": "Camiseta Seleccion Argentina Copa America",
+    "seccion": "Futbol",
+    "precio": 12999,
+    "imagen": "./img/copaamerica.jpg"
+}, 
+{
+    "articulo": "Los Angeles Lakers",
+    "seccion": "Basquet",
+    "precio": 9999,
+    "imagen": "./img/lakers.jpg"
+}, 
+{
+    "articulo": "Palo de Hockey Drial",
+    "seccion": "Hockey",
+    "precio": 6299,
+    "imagen": "./img/drial.jpg"
+}, 
+{
+    "articulo": "Camiseta Independiente 2022",
+    "seccion": "Futbol",
+    "precio": 7999,
+    "imagen": "./img/independiente.jpg"
+}, 
+{
+    "articulo": "Camiseta Termica Flash",
+    "seccion": "Deportiva",
+    "precio": 7499,
+    "imagen": "./img/termica.jpg"
+}, 
+{
+    "articulo": "Camiseta Boca Juniors 2022",
+    "seccion": "Futbol",
+    "precio": 14999,
+    "imagen": "./img/boca.jpg"
+}, 
+{
+    "articulo": "Botines Puma Netfit",
+    "seccion": "Futbol",
+    "precio": 8999,
+    "imagen": "./img/puma.jpg"
+}, 
+{
+    "articulo": "Botines Total 90",
+    "seccion": "Futbol",
+    "precio": 5999,
+    "imagen": "./img/total.jpg"
+}, 
+{
+    "articulo": "Camiseta Seleccion Argentina 2022",
+    "seccion": "Futbol",
+    "precio": 14999,
+    "imagen": "./img/argqatar.png"
+}, 
+{
+    "articulo": "Chicago Bulls 23",
+    "seccion": "Basquet",
+    "precio": 9999,
+    "imagen": "./img/musculosa.png"
+}, 
+{
+    "articulo": "Camiseta Seleccion Argentina '86",
+    "seccion": "Futbol",
+    "precio": 7499,
+    "imagen": "./img/mexico86.jpg"
+}, 
+{
+    "articulo": "Camiseta River Plate 2022 Alternativa",
+    "seccion": "Futbol",
+    "precio": 12999,
+    "imagen": "./img/river2da.jpg"
+}, 
+{
+    "articulo": "Camiseta Racing Club 2022",
+    "seccion": "Futbol",
+    "precio": 7999,
+    "imagen": "./img/racing.jpg"
+}     
+]

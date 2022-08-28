@@ -6,47 +6,57 @@ class Producto{
         this.precio = precio,
         this.imagen = imagen
 
-        this.propiedadArt = function(){};
+        // this.propiedadArt = function(){};
     }    
 }
-const producto1 = new Producto("Camiseta River Plate 2022", "Futbol", 14999, "./img/river1ra.jpg")
-producto1.propiedadArt()
-const producto2 = new Producto("Camiseta Estudiantes de la Plata", "Futbol", 8999, "./img/estudiantes.jpg")
-producto2.propiedadArt()
-const producto3 = new Producto("Seleccion Argentina Hockey", "Hockey", 7999, "./img/leonas.jpg")
-producto3.propiedadArt()
-const producto4 = new Producto("Camiseta Seleccion Argentina Copa America", "Futbol", 12999, "./img/copaamerica.jpg")
-producto4.propiedadArt()
-const producto5 = new Producto("Los Angeles Lakers", "Basquet", 9999, "./img/lakers.jpg")
-producto5.propiedadArt()
-const producto6 = new Producto("Palo de Hockey Drial", "Hockey", 6299, "./img/drial.jpg")
-producto6.propiedadArt()
-const producto7 = new Producto("Camiseta Independiente 2022", "Futbol", 7999, "./img/independiente.jpg")
-producto7.propiedadArt()
-const producto8 = new Producto("Camiseta Termica Flash", "Deportiva", 7499, "./img/termica.jpg")
-producto8.propiedadArt()
-const producto9 = new Producto("Camiseta Boca Juniors 2022", "Futbol", 14999, "./img/boca.jpg")
-producto9.propiedadArt()
-const producto10 = new Producto("Botines Puma Netfit", "Futbol", 8999, "./img/puma.jpg")
-producto10.propiedadArt()
-const producto11 = new Producto("Botines Total 90", "Futbol", 5999, "./img/total.jpg")
-producto11.propiedadArt()
-const producto12 = new Producto("Camiseta Seleccion Argentina 2022", "Futbol", 14999, "./img/argqatar.png")
-producto12.propiedadArt()
-const producto13 = new Producto("Chicago Bulls 23", "Basquet", 9999, "./img/musculosa.png")
-producto13.propiedadArt()
-const producto14 = new Producto("Camiseta Seleccion Argentina '86", "Futbol", 7499, "./img/mexico86.jpg")
-producto14.propiedadArt()
-const producto15 = new Producto("Camiseta River Plate 2022 Alternativa", "Futbol", 12999, "./img/river2da.jpg")
-producto15.propiedadArt()
-const producto16 = new Producto("Camiseta Racing Club 2022", "Futbol", 7999, "./img/racing.jpg")
-producto16.propiedadArt()
+
+// const producto1 = new Producto("Camiseta River Plate 2022", "Futbol", 14999, "./img/river1ra.jpg")
+// producto1.propiedadArt()
+// const producto2 = new Producto("Camiseta Estudiantes de la Plata", "Futbol", 8999, "./img/estudiantes.jpg")
+// producto2.propiedadArt()
+// const producto3 = new Producto("Seleccion Argentina Hockey", "Hockey", 7999, "./img/leonas.jpg")
+// producto3.propiedadArt()
+// const producto4 = new Producto("Camiseta Seleccion Argentina Copa America", "Futbol", 12999, "./img/copaamerica.jpg")
+// producto4.propiedadArt()
+// const producto5 = new Producto("Los Angeles Lakers", "Basquet", 9999, "./img/lakers.jpg")
+// producto5.propiedadArt()
+// const producto6 = new Producto("Palo de Hockey Drial", "Hockey", 6299, "./img/drial.jpg")
+// producto6.propiedadArt()
+// const producto7 = new Producto("Camiseta Independiente 2022", "Futbol", 7999, "./img/independiente.jpg")
+// producto7.propiedadArt()
+// const producto8 = new Producto("Camiseta Termica Flash", "Deportiva", 7499, "./img/termica.jpg")
+// producto8.propiedadArt()
+// const producto9 = new Producto("Camiseta Boca Juniors 2022", "Futbol", 14999, "./img/boca.jpg")
+// producto9.propiedadArt()
+// const producto10 = new Producto("Botines Puma Netfit", "Futbol", 8999, "./img/puma.jpg")
+// producto10.propiedadArt()
+// const producto11 = new Producto("Botines Total 90", "Futbol", 5999, "./img/total.jpg")
+// producto11.propiedadArt()
+// const producto12 = new Producto("Camiseta Seleccion Argentina 2022", "Futbol", 14999, "./img/argqatar.png")
+// producto12.propiedadArt()
+// const producto13 = new Producto("Chicago Bulls 23", "Basquet", 9999, "./img/musculosa.png")
+// producto13.propiedadArt()
+// const producto14 = new Producto("Camiseta Seleccion Argentina '86", "Futbol", 7499, "./img/mexico86.jpg")
+// producto14.propiedadArt()
+// const producto15 = new Producto("Camiseta River Plate 2022 Alternativa", "Futbol", 12999, "./img/river2da.jpg")
+// producto15.propiedadArt()
+// const producto16 = new Producto("Camiseta Racing Club 2022", "Futbol", 7999, "./img/racing.jpg")
+// producto16.propiedadArt()
+
 
 //Carga de Array forma directa
 let Venta = []
 let articuloComprado = []
-// console.log(Venta);
 
+fetch("articulos.json")
+.then(response => response.json())
+.then(data =>{
+    for(let producto of data) {
+        let nuevoArticulo = new Producto (producto.articulo, producto.seccion, producto.precio, producto.imagen)
+        localStorage.getItem("Venta") ? Venta = JSON.parse(localStorage.getItem("Venta")) : Venta.push(data)
+        localStorage.setItem("Venta", JSON.stringify(data))
+    }
+})
 //Elementos
 let botonCarrito = document.getElementById("botonCarrito")
 let modalBody = document.getElementById("modal-body")
@@ -112,13 +122,6 @@ function addToCart(producto){
         confirmButtonText: "Cerrar"
    }) 
 }
-
-
-
-//Iniciacion de array Venta OPERADOR TERNARIO
-localStorage.getItem("Venta") ? Venta = JSON.parse(localStorage.getItem("Venta")) : Venta.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16)
-localStorage.setItem("Venta", JSON.stringify(Venta))
-
 
 //Iniciacion de array cart OPERADOR TERNARIO
 localStorage.getItem("cart") ? articuloComprado = JSON.parse(localStorage.getItem("cart")) : localStorage.setItem("cart", [])
