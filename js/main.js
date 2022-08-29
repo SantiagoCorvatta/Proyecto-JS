@@ -56,6 +56,8 @@ fetch("articulos.json")
         localStorage.getItem("Venta") ? Venta = JSON.parse(localStorage.getItem("Venta")) : Venta.push(data)
         localStorage.setItem("Venta", JSON.stringify(data))
     }
+    
+    mostrarCatalogo()
 })
 //Elementos
 let botonCarrito = document.getElementById("botonCarrito")
